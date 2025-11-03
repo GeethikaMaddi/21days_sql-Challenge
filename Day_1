@@ -1,14 +1,14 @@
 # 🏥 Day 1 – SQL Challenge  
 
-### **Question:**  
+**Question:**  
 List all unique hospital services available in the hospital.
 ---
-### **Database Used:**  
+**Database Used:**  
 `hospital`
 
 ---
 
-### **SQL Query:**
+**SQL Query:**
 
 USE hospital;
 
