@@ -27,3 +27,20 @@ It contains 4 key tables that store information about patients, hospital staff, 
 | `service_weekly` | Lists hospital services offered each week (e.g., Cardiology, Orthopedics, Neurology). |
 | `staff` | Contains details about doctors, nurses, and other hospital employees. |
 | `staff_schedule` | Tracks staff service assignments, shift timings, and weekly work schedules. |
+
+
+
+## 🧾 SQL Practice Log
+
+🏷️ [@DPDzero](https://www.linkedin.com/company/dpdzero/)
+
+[@IndianDataClub](https://www.linkedin.com/company/indian-data-club/)
+
+| 🗓️ **Day** | 💭 **Question**                                                                                                                                                                              |
+| :---------: | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  **Day 1**  | List all unique hospital services available in the hospital.                                                                                                                                 |
+|  **Day 2**  | Find all patients admitted to 'Surgery' service with a satisfaction score below 70, showing their patient_id, name, age, and satisfaction score.                                             |
+|  **Day 3**  | Retrieve the top 5 weeks with the highest patient refusals across all services, showing week, service, patients_refused, and patients_request. Sort by patients_refused in descending order. |
+
+
+
