@@ -10,14 +10,14 @@ Order by average satisfaction descending.
 */
 
 --> Sql Query
-select service,count(patient_id) as tt_patients_admitted, 
-    case 
-    when avg(satisfaction)>=85 then 'Excellent'
-    when avg(satisfaction)>=75 then 'Good'
-    when avg(satisfaction)>=65 then 'Fair'
-    else 'Needs Improvement'
-    end as performance_category
-    from patients
-    group by service
-    order by avg(satisfaction) desc;
-    
+
+ SELECT service,SUM(patients_admitted) AS total_patients_admitted,AVG(patient_satisfaction) AS avg_satisfaction,
+    CASE 
+        WHEN AVG(patient_satisfaction) >= 85 THEN 'Excellent'
+        WHEN AVG(patient_satisfaction) >= 75 THEN 'Good'
+        WHEN AVG(patient_satisfaction) >= 65 THEN 'Fair'
+        ELSE 'Needs Improvement'
+    END AS performance_category
+FROM services_weekly
+GROUP BY service
+ORDER BY avg_satisfaction DESC;
