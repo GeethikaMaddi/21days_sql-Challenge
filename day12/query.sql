@@ -9,12 +9,11 @@ count of weeks, average patient satisfaction, and average staff morale. Order by
 
 --> Sql query
 
-select event,case when event='none' then 'No Event'
+select case when event='none' then 'No Event'
             else 'With Event'
             end as event_status,
             count(week),avg(patient_satisfaction),avg(staff_morale) 
 from services_weekly
-group by event
+group by event_status
 order by avg(patient_satisfaction) desc;
-            
             
