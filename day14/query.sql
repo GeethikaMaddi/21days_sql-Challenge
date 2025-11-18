@@ -5,9 +5,17 @@ Include staff members even if they have no schedule records. Order by weeks pres
 */
 
 -- Sql Query
-select staff_id, staff_name, role, service,coalesce(count(week),0) as weeks_present
-from staff_schedule
-group by staff_id,staff_name, role, service
-order by count(week) desc;
+SELECT 
+    st.staff_id,
+    st.staff_name,
+    st.role,
+    st.service,
+    COALESCE(COUNT(ss.week), 0) AS weeks_present
+FROM staff st
+left JOIN staff_schedule ss 
+ON st.staff_name = ss.staff_name        
+GROUP BY st.staff_id, st.staff_name, st.role, st.service
+ORDER BY weeks_present DESC;
+
   
   
