@@ -1,0 +1,6 @@
+pizza_id,pizza_type_id,size,price
+big_meat_m,big_meat,M,16
+big_meat_l,big_meat,L,20.5
+five_cheese_s,five_cheese,S,12.5
+five_cheese_m,five_cheese,M,15.5
+four_cheese_s,four_cheese,S,11.75
