@@ -2,62 +2,23 @@
 /*
 Question:
 
-Create a report showing each service with: service name, total patients admitted, the difference between their total admissions and 
-the average admissions across all services, and a rank indicator ('Above Average', 'Average', 'Below Average'). 
-Order by total patients admitted descending.
+Create a comprehensive personnel and patient list showing: identifier (patient_id or staff_id), full name, 
+type ('Patient' or 'Staff'), and associated service.
+ Include only those in 'surgery' or 'emergency' services. Order by type, then service, then name.
+
 */
 
 -- Sql query
 
-WITH service_stats AS (
-    SELECT 
-        service,
-        COUNT(*) AS total_admissions
-    FROM patients
-    GROUP BY service
-),
-avg_stats AS (
-    SELECT 
-        AVG(total_admissions) AS avg_admissions
-    FROM service_stats
-)
-SELECT 
-    ss.service,
-    ss.total_admissions,
-    ss.total_admissions - a.avg_admissions AS difference_from_average,
-    CASE
-        WHEN ss.total_admissions > a.avg_admissions THEN 'Above Average'
-        WHEN ss.total_admissions = a.avg_admissions THEN 'Average'
-        ELSE 'Below Average'
-    END AS rank_indicator
-FROM service_stats ss
-CROSS JOIN avg_stats a
-ORDER BY ss.total_admissions DESC;
 
-
-
-/*
-
-*/
-SELECT 
-    p.patient_id AS identifier,
-    p.patient_name AS full_name,
-    'Patient' AS type,
-    p.service
+SELECT p.patient_id AS identifier, p.name AS full_name,'Patient' AS type,p.service
 FROM patients p
 WHERE LOWER(p.service) IN ('surgery', 'emergency')
 
 UNION ALL
 
-SELECT
-    s.staff_id AS identifier,
-    s.staff_name AS full_name,
-    'Staff' AS type,
-    s.service
+SELECT s.staff_id AS identifier,s.staff_name AS full_name,'Staff' AS type,s.service
 FROM staff s
 WHERE LOWER(s.service) IN ('surgery', 'emergency')
+ORDER BY type,service,full_name;
 
-ORDER BY 
-    type,
-    service,
-    full_name;
